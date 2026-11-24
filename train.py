@@ -16,6 +16,7 @@ def main():
     parser.add_argument("--batch", type=int, default=8)
     parser.add_argument("--imgsz", type=int, default=640)
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--name", default="doom", help="Run directory name under runs/")
     args = parser.parse_args()
     dataset = args.data.resolve()
     if not dataset.is_file():
@@ -25,7 +26,7 @@ def main():
     model.train(
         data=str(dataset), device=args.device, epochs=args.epochs,
         batch=args.batch, imgsz=args.imgsz, seed=args.seed,
-        patience=10, workers=0, project=str(Path("runs").resolve()), name="doom",
+        patience=10, workers=0, project=str(Path("runs").resolve()), name=args.name,
     )
     best_path = Path(model.trainer.best)
     print(f"Best checkpoint: {best_path}")

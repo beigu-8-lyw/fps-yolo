@@ -24,7 +24,7 @@ py -3.12 -m venv .venv
 
 ```powershell
 .\.venv\Scripts\python.exe collect.py --output data/smoke --episodes 12
-.\.venv\Scripts\python.exe train.py --data data/smoke/dataset.yaml --epochs 1
+.\.venv\Scripts\python.exe train.py --data data/smoke/dataset.yaml --epochs 1 --name doom-smoke
 ```
 
 确认能完成一轮后，再采集更多回合并正式训练。
@@ -40,7 +40,7 @@ py -3.12 -m venv .venv
 
 ## 预测并输出 JSON
 
-在 `$weights` 变量中填入训练结束时打印的路径。下面以第一次运行的目录为例。
+在 `$weights` 变量中填入训练结束时打印的路径。下面以第一次正式训练的目录为例。
 
 ```powershell
 $weights = 'runs/doom/weights/best.pt'
